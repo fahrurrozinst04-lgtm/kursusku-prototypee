@@ -1,0 +1,6 @@
+AI USAGE LOG - PERTEMUAN 5
+Isi hanya jika Anda memakai AI. Anda harus bisa menjelaskan setiap atribut/baris yang dipakai.
+
+Tanggal | Tujuan prompt | Saran AI yang dipakai/ditolak | Alasan keputusan
+--------+---------------+-------------------------------+-----------------
+        |               |                               |

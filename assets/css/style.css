@@ -1,0 +1,350 @@
+/* ==========================================================================
+   style.css - KursusKu (Pertemuan 5)
+   Satu stylesheet untuk semua halaman: index, fee-calculator,
+   registration, process-registration.
+   Bagian 1-3 mengikuti panduan; bagian 4-7 menyatukan halaman lama.
+   ========================================================================== */
+
+/* 1. GLOBAL ---------------------------------------------------------------- */
+:root {
+  --brand: #0f766e;
+  --brand-dark: #0b5f55;
+  --surface: #ffffff;
+  --soft: #eef8f5;
+  --text: #14231f;
+  --muted: #60756e;
+  --line: #d9e6e2;
+  --ok-bg: #e7f8ef;
+  --ok-text: #146c43;
+  --bad-bg: #fdeaea;
+  --bad-text: #a61b1b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background: #f6f9f8;
+  line-height: 1.6;
+}
+
+.container {
+  width: min(1080px, 92%);
+  margin-inline: auto;
+}
+
+a { color: var(--brand-dark); }
+
+img, video { max-width: 100%; height: auto; }
+
+/* 2. HEADER & NAVIGASI ------------------------------------------------------ */
+.site-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-wrap {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+nav {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+nav a { text-decoration: none; font-size: .95rem; }
+nav a:hover { text-decoration: underline; }
+
+.brand {
+  font-weight: 800;
+  text-decoration: none;
+  color: var(--brand-dark);
+  font-size: 1.15rem;
+}
+
+.page-intro {
+  max-width: 720px;
+  margin: 2.5rem auto 1.25rem;
+}
+
+.eyebrow {
+  color: var(--brand);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin: 0;
+}
+
+/* 3. FORM, CARD, TOMBOL, ALERT --------------------------------------------- */
+.form-card,
+.summary-card {
+  max-width: 760px;
+  margin: 0 auto 2rem;
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.form-group { margin-bottom: 1rem; }
+
+fieldset.form-group {
+  border: 1px solid var(--line);
+  border-radius: .65rem;
+  padding: .8rem 1rem;
+}
+
+label,
+legend {
+  display: block;
+  font-weight: 700;
+  margin-bottom: .35rem;
+}
+
+legend { padding: 0 .35rem; margin-bottom: 0; }
+
+input,
+select,
+textarea,
+button {
+  font: inherit;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+  width: 100%;
+  padding: .8rem .9rem;
+  border: 1px solid #b8ccc6;
+  border-radius: .65rem;
+  background: #fff;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 3px solid rgba(15, 118, 110, .18);
+  border-color: var(--brand);
+}
+
+.choice {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  margin-right: 1rem;
+  font-weight: 400;
+}
+
+.help { color: var(--muted); }
+
+.btn-primary,
+.btn-link {
+  display: inline-block;
+  border: 0;
+  border-radius: .7rem;
+  padding: .8rem 1.1rem;
+  background: var(--brand);
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover,
+.btn-link:hover { background: var(--brand-dark); }
+
+.btn-primary:focus-visible,
+.btn-link:focus-visible,
+nav a:focus-visible {
+  outline: 3px solid rgba(15, 118, 110, .35);
+  outline-offset: 2px;
+}
+
+.alert-success {
+  max-width: 760px;
+  margin: 2rem auto 1rem;
+  padding: 1.2rem;
+  background: #eaf8f1;
+  border-left: 4px solid #17824f;
+}
+
+.alert-success h1 { margin: 0 0 .25rem; font-size: 1.4rem; }
+.alert-success p { margin: 0; }
+
+.summary-list {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: .65rem 1rem;
+}
+
+.summary-list dt { font-weight: 700; }
+.summary-list dd { margin: 0; overflow-wrap: anywhere; }
+
+/* 4. LANDING PAGE (index.php) ---------------------------------------------- */
+main.container { padding-bottom: 2rem; }
+
+.section { margin: 2.5rem 0; }
+.section h2 { margin: 0 0 1rem; }
+
+.hero {
+  margin-top: 2rem;
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.hero h1 { margin: 0 0 .5rem; }
+.hero p { color: var(--muted); }
+
+.hero-actions {
+  display: flex;
+  gap: .75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.btn-outline {
+  display: inline-block;
+  padding: .8rem 1.1rem;
+  border: 1px solid var(--brand);
+  border-radius: .7rem;
+  color: var(--brand-dark);
+  text-decoration: none;
+  background: var(--surface);
+}
+
+.btn-outline:hover { background: var(--soft); }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  padding: 1.25rem;
+}
+
+.card h3 { margin: 0 0 .35rem; }
+.card p { margin: 0; color: var(--muted); }
+
+.steps { padding-left: 1.25rem; }
+.steps li { margin-bottom: .35rem; }
+
+.media-figure { margin: 0 0 1rem; }
+.media-figure img { border-radius: 1rem; border: 1px solid var(--line); max-height: 420px; object-fit: cover; width: 100%; }
+video { border-radius: 1rem; width: 100%; }
+
+.site-footer {
+  text-align: center;
+  padding: 1.25rem;
+  color: var(--muted);
+  font-size: .85rem;
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+}
+
+/* 5. TABEL, BADGE, KATALOG -------------------------------------------------- */
+.table-wrap {
+  overflow-x: auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+}
+
+table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+
+th, td {
+  padding: .7rem .8rem;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+thead th {
+  background: var(--soft);
+  color: var(--muted);
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; }
+
+.badge {
+  display: inline-block;
+  padding: .15rem .6rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: .78rem;
+}
+
+.badge-available, .badge-pass { background: var(--ok-bg); color: var(--ok-text); }
+.badge-full, .badge-fail { background: var(--bad-bg); color: var(--bad-text); }
+
+.link-disabled { color: var(--muted); }
+
+/* 6. KALKULATOR BIAYA (fee-calculator.php) --------------------------------- */
+.formula {
+  background: var(--soft);
+  border-left: 4px solid var(--brand);
+  padding: .8rem 1rem;
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: .88rem;
+  overflow-x: auto;
+  margin: 0 0 1.25rem;
+}
+
+tr.total td { background: var(--soft); font-weight: 700; }
+.note { color: var(--muted); font-size: .9rem; }
+.subtitle { color: var(--muted); margin: 0 0 1.25rem; }
+
+.calc-card {
+  max-width: 760px;
+  margin: 2rem auto 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.calc-card h1 { margin: 0 0 .25rem; font-size: 1.5rem; }
+.calc-card h2 { margin: 0 0 .75rem; font-size: 1.15rem; }
+
+/* 7. RESPONSIF -------------------------------------------------------------- */
+@media (max-width: 800px) {
+  .card-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .nav-wrap { align-items: flex-start; padding-block: .8rem; }
+  nav { gap: .65rem; }
+  .form-grid { grid-template-columns: 1fr; }
+  .form-card,
+  .summary-card { padding: 1rem; }
+  .summary-list { grid-template-columns: 1fr; }
+  .btn-primary { width: 100%; padding-block: .95rem; }
+  .choice { display: flex; margin-right: 0; padding-block: .3rem; }
+  .hero { padding: 1.5rem 1rem; }
+}
