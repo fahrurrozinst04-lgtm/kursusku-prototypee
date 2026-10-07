@@ -1,4 +1,4 @@
-# Langkah Pembuatan KursusKu (Pertemuan 2 - 5)
+# Langkah Pembuatan KursusKu (Pertemuan 2 - 6)
 
 Proyek tunggal: `C:\laragon\www\kursusku-prototype`. Setiap pertemuan **melanjutkan** file
 pertemuan sebelumnya, tidak membuat proyek baru.
@@ -11,6 +11,7 @@ pertemuan sebelumnya, tidak membuat proyek baru.
 | 3 | Kalkulator estimasi biaya + 5 test case | `fee-calculator.php` |
 | 4 | Katalog data-driven, function reusable, 6 test | `helpers.php`, `test-functions.php`, `index.php` |
 | 5 | Form pendaftaran (POST), CSS responsif, GET/POST, hosting | `registration.php`, `process-registration.php`, `assets/css/style.css` |
+| 6 | Alur lengkap: form lanjutan, diskon (if/elseif), label (switch), looping, history dummy | `data.php`, `register.php`, `process.php`, `history.php`, `loop-lab.php` |
 
 ---
 
@@ -123,3 +124,112 @@ GET yang tepat: URL dapat dibagikan dan tidak mengubah data.
 | Checkbox hanya satu nilai | Pastikan `name="interests[]"` |
 | Data terlihat di URL | Method masih GET, kembalikan ke POST |
 | Gambar hero tidak muncul | Nama file harus `hero-kursus.jpg` |
+
+
+---
+
+# PERTEMUAN 6 - Percabangan, Looping, dan Form Lanjutan
+
+Alur akhir: `index.php` -> `register.php` -> `process.php` (validasi + hitung) -> ringkasan -> `history.php`.
+Tanpa database.
+
+## Bagian P6-0 - Persiapan
+
+1. Backup kondisi minggu 5: `git add . ; git commit -m "backup: kondisi minggu 5"`.
+2. Buat folder `evidence/week-06`.
+3. Pertemuan 5 tetap utuh sebagai arsip (`registration.php`, `process-registration.php`). Alur utama
+   sekarang memakai `register.php` dan `process.php`; seluruh tautan navigasi sudah diarahkan ke sana.
+
+## Bagian P6-1 - `data.php` (array + looping)
+
+Pindahkan data ke array: `$courses` (code, name, fee), `$interestOptions` (key => label), `$facilities`.
+Prinsip: ubah data di satu tempat, tampilan ikut berubah karena dirender dengan `foreach`.
+*Checkpoint:* ubah nama satu kursus, refresh `register.php`, nama ikut berubah.
+
+## Bagian P6-2 - Tambah fungsi di `helpers.php` (satu per satu, jalankan tiap selesai)
+
+| Fungsi | Latihan | Catatan |
+|--------|---------|---------|
+| `formatRupiah()` | format output | hasil `Rp240.000` (tanpa spasi, beda dengan `rupiah()` P4) |
+| `findCourse()` | `foreach` + `return` | `null` jika kode tidak ada |
+| `getDiscountPercent()` | `if / elseif / else` | mahasiswa 20, guru 15, lainnya 0 |
+| `getLearningModeLabel()` | `switch` | `default` untuk nilai tak sah |
+| `postString()` | `??` + `trim` | tambahan: aman jika field dikirim sebagai array |
+
+## Bagian P6-3 - `register.php` (form lanjutan)
+
+| Kontrol | `name` | Catatan |
+|---------|--------|---------|
+| text, email | `name`, `email` | `required` |
+| select (foreach) | `course_code` | opsi dari `$courses` |
+| radio | `participant_type` | satu `name` untuk satu grup, `required` |
+| checkbox (foreach) | `interests[]` | `[]` agar PHP menerima array |
+| select | `learning_mode` | offline / online / hybrid |
+| select (for) | `package_count` | angka 1-3 dari `for ($i = 1; $i <= 3; $i++)` |
+| textarea | `notes` | `maxlength="300"` |
+
+Daftar fasilitas juga ditampilkan dengan `foreach`.
+
+## Bagian P6-4 - `process.php` (urutan kerja)
+
+1. **Guard:** jika bukan POST -> `header('Location: register.php'); exit;` (sebelum ada output HTML).
+2. **Baca input:** `postString()`; `package_count` di-cast `(int)`; `interests` dipastikan array lalu
+   disaring dengan `array_intersect` terhadap key yang diizinkan.
+3. **Validasi:** kumpulkan pesan ke `$errors` (nama, email, kursus, tipe, metode, paket, panjang catatan).
+4. **Jika `$errors !== []`:** tampilkan daftar dengan `foreach`, lalu `exit` agar perhitungan tidak jalan
+   dengan data rusak.
+5. **Hitung biaya:** biaya satuan -> jumlah paket -> subtotal (`$grossTotal`) -> persen diskon ->
+   nilai diskon (`intdiv`) -> total akhir.
+6. **Ringkasan:** tampil data peserta, rincian biaya, dan minat; semua teks lewat `e()`.
+
+Contoh: PHP Dasar, Mahasiswa, 1 paket -> 400.000 - 20% = **Rp320.000**.
+
+## Bagian P6-5 - `history.php` dan `loop-lab.php`
+
+- `history.php`: array dummy 3 record, ditampilkan dengan `foreach ($history as $index => $item)`.
+- `loop-lab.php`: `for`, `while`, `do-while` (batas `$limit = 5`; ganti ke 3 lalu jelaskan bagian
+  yang menghentikan loop), plus perbandingan do-while minimal berjalan sekali, dan `foreach`.
+
+## Bagian P6-6 - Pengujian dan evidence
+
+1. Buka `test-functions.php`: 19 test, semua harus PASS.
+2. Jalankan 12 skenario di `evidence/week-06/test-matrix.txt`. Kolom "Uji otomatis" sudah terisi dari
+   pengecekan skrip; kolom "Status browser" Anda isi sendiri.
+3. Screenshot minimum di `evidence/week-06/`: form lengkap, ringkasan mahasiswa, ringkasan guru/umum,
+   beberapa checkbox, minat kosong tanpa warning, history dummy.
+4. Isi `refleksi.txt` (bahasa sendiri) dan `ai-usage-log.txt` bila memakai AI.
+5. Commit: `git add . ; git commit -m "milestone 6: percabangan, looping, form lanjutan"` lalu `git push`.
+
+## Bagian P6-7 - Halaman `test-matrix.php` (menu Test Matrix)
+
+1. Pindahkan validasi dan hitung biaya dari `process.php` ke `helpers.php`:
+   `validateRegistration()`, `calculateRegistration()`, `sanitizeInterests()`.
+   `process.php` dan `test-matrix.php` memakai fungsi yang sama.
+2. Di `test-matrix.php`, tulis 12 skenario sebagai array `[skenario, actual, expected]`.
+   *Actual* dihitung dari fungsi, *expected* ditulis manual dari panduan.
+3. Status: `PASS` bila `$actual === $expected`, selain itu `FAIL`. Ringkasan dihitung dengan `count(array_filter(...))`.
+4. Skenario 11 (redirect GET) dan 12 (fasilitas lewat foreach) diperiksa dari kode sumber; keduanya tetap
+   perlu Anda coba sendiri di browser untuk screenshot.
+5. Menu **Test Matrix** dan **Riwayat** ditambahkan di navigasi semua halaman.
+
+## Checklist akhir Milestone 6
+
+- [ ] Form POST ke `process.php`; radio grup bekerja; checkbox `interests[]`
+- [ ] Kursus dan jumlah paket dirender dari loop
+- [ ] Diskon mahasiswa/guru/umum benar; `switch` dipakai untuk metode belajar
+- [ ] Minat kosong tanpa warning; output di-escape
+- [ ] `history.php` dan `loop-lab.php` berjalan
+- [ ] Evidence week-06 lengkap; bisa menjelaskan: radio vs checkbox, kenapa `[]`, kenapa `foreach`,
+      urutan hitung total, fungsi `??`, `htmlspecialchars()`, alasan belum memakai database
+
+## Troubleshooting P6
+
+| Gejala | Periksa |
+|--------|---------|
+| `Undefined array key "interests"` | pakai `$_POST['interests'] ?? []` |
+| `foreach() argument must be of type array` | `name="interests[]"` dan cek `is_array()` |
+| `Call to undefined function` | `require __DIR__ . '/helpers.php';` belum ada |
+| Semua peserta diskon sama | `value` radio dan operator `===` |
+| Total salah | `$packageCount` harus integer |
+| Warning `headers already sent` | redirect harus sebelum HTML/echo |
+| `Kursus tidak ditemukan` | `value` option harus sama dengan `code` di `data.php` |

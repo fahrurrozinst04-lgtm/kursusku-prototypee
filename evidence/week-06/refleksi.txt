@@ -1,0 +1,12 @@
+REFLEKSI SINGKAT - PERTEMUAN 6  (tulis dengan bahasa Anda sendiri)
+
+1. Bagian paling saya pahami:
+2. Bagian yang masih membingungkan:
+3. Satu bug yang saya temukan:
+4. Cara saya memperbaikinya:
+5. Perbedaan branching dan looping menurut saya:
+
+Daftar screenshot minimum (simpan di folder ini):
+[ ] 01-form-lengkap.png          [ ] 02-ringkasan-mahasiswa.png
+[ ] 03-ringkasan-guru-umum.png   [ ] 04-checkbox-beberapa.png
+[ ] 05-minat-kosong.png          [ ] 06-history-dummy.png

@@ -1,0 +1,35 @@
+TEST MATRIX - PERTEMUAN 6 (Alur Pendaftaran KursusKu)
+Kolom "Uji otomatis" = hasil pengecekan skrip terhadap server PHP 8.3 (HTTP request).
+Kolom "Status browser" WAJIB Anda isi sendiri (PASS / FAIL) setelah mencoba di browser,
+lalu ambil screenshot. Jika FAIL, isi Fix dan jalankan ulang test tersebut.
+
+No | Skenario                                  | Hasil yang diharapkan                    | Uji otomatis | Status browser | Actual / Fix
+---+-------------------------------------------+------------------------------------------+--------------+----------------+-------------
+1  | Mahasiswa, Web Dasar, 1 paket             | Total Rp240.000                          | PASS         |                |
+2  | Guru, PHP Dasar, 1 paket                  | Total Rp340.000                          | PASS         |                |
+3  | Umum, Laravel Dasar, 1 paket              | Total Rp500.000                          | PASS         |                |
+4  | Mahasiswa, Web Dasar, 2 paket             | Total Rp480.000                          | PASS         |                |
+5  | Nama kosong                               | Pesan "Nama wajib diisi."                | PASS         |                |
+6  | Email bukan format email                  | Pesan "Format email tidak valid."        | PASS         |                |
+7  | Tidak memilih minat                       | Tanpa warning; "Belum memilih minat."    | PASS         |                |
+8  | Pilih 3 minat                             | Ketiga pilihan tampil di ringkasan       | PASS         |                |
+9  | Metode offline                            | Label "Tatap Muka"                       | PASS         |                |
+10 | Metode hybrid                             | Label "Hybrid"                           | PASS         |                |
+11 | Buka process.php langsung (GET)           | Redirect ke register.php                 | PASS         |                |
+12 | Tambah satu fasilitas di data.php         | Item baru tampil otomatis lewat loop     | PASS         |                |
+
+Uji tambahan (keamanan input)
+13 | Nama berisi <script>                      | Tampil sebagai teks, tidak dieksekusi    | PASS         |                |
+14 | Kode kursus palsu dikirim manual          | "Kursus tidak ditemukan."                | PASS         |                |
+15 | Jumlah paket 99 dikirim manual            | "Jumlah paket tidak valid."              | PASS         |                |
+16 | Field dikirim sebagai array (name[]=a)    | Tidak crash / tidak ada fatal error      | PASS         |                |
+
+Unit test helper: buka test-functions.php (harus semua PASS).
+
+Format catatan per test yang gagal:
+Test # :
+Input  :
+Expect :
+Actual :
+Status : PASS / FAIL
+Fix    :

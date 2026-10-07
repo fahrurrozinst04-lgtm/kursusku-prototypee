@@ -1,0 +1,6 @@
+AI USAGE LOG - PERTEMUAN 6
+Isi jika Anda memakai AI. Anda harus bisa menjelaskan setiap baris kode yang dikumpulkan.
+
+Prompt / masalah | Saran AI | Diterima / ditolak | Alasan + hasil test
+-----------------+----------+--------------------+--------------------
+                 |          |                    |

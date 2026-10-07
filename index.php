@@ -25,7 +25,9 @@ $courses = require __DIR__ . '/courses-data.php';
             <a href="index.php">Beranda</a>
             <a href="index.php#katalog">Katalog</a>
             <a href="fee-calculator.php">Estimasi Biaya</a>
-            <a href="registration.php">Daftar Kursus</a>
+            <a href="register.php">Daftar Kursus</a>
+            <a href="history.php">Riwayat</a>
+            <a href="test-matrix.php">Test Matrix</a>
         </nav>
     </div>
 </header>
@@ -35,7 +37,7 @@ $courses = require __DIR__ . '/courses-data.php';
         <h1><?= e($tagline) ?></h1>
         <p>Temukan kursus teknologi yang relevan untuk meningkatkan keterampilan Anda.</p>
         <div class="hero-actions">
-            <a class="btn-primary" href="registration.php">Daftar Kursus</a>
+            <a class="btn-primary" href="register.php">Daftar Kursus</a>
             <a class="btn-outline" href="#katalog">Lihat Katalog</a>
             <a class="btn-outline" href="fee-calculator.php">Estimasi Biaya</a>
         </div>
@@ -92,7 +94,7 @@ $courses = require __DIR__ . '/courses-data.php';
                                 <?php if ($isFull): ?>
                                     <span class="link-disabled">Tidak tersedia</span>
                                 <?php else: ?>
-                                    <a href="registration.php?course=<?= urlencode($course['code']) ?>">Daftar</a>
+                                    <a href="register.php">Daftar</a>
                                 <?php endif; ?>
                             </td>
                         </tr>
@@ -110,7 +112,7 @@ $courses = require __DIR__ . '/courses-data.php';
             <li>Periksa kembali data.</li>
             <li>Kirim pendaftaran dan tunggu konfirmasi.</li>
         </ol>
-        <a class="btn-primary" href="registration.php">Mulai Daftar</a>
+        <a class="btn-primary" href="register.php">Mulai Daftar</a>
     </section>
 
     <section class="section" id="media">

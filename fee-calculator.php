@@ -60,7 +60,9 @@ $testCases = [
       <a href="index.php">Beranda</a>
       <a href="index.php#katalog">Katalog</a>
       <a href="fee-calculator.php">Estimasi Biaya</a>
-      <a href="registration.php">Daftar Kursus</a>
+      <a href="register.php">Daftar Kursus</a>
+            <a href="history.php">Riwayat</a>
+            <a href="test-matrix.php">Test Matrix</a>
     </nav>
   </div>
 </header>
@@ -114,7 +116,7 @@ $testCases = [
       </table>
     </div>
 
-    <p><a class="btn-link" href="registration.php">Lanjut ke Pendaftaran</a></p>
+    <p><a class="btn-link" href="register.php">Lanjut ke Pendaftaran</a></p>
   </section>
 
   <section class="calc-card">

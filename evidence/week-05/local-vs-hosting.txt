@@ -1,0 +1,28 @@
+TABEL PERBANDINGAN: LOCAL DEVELOPMENT vs HOSTING / PRODUCTION
+Proyek : KursusKu - Pertemuan 5 (Pemrograman Web III)
+
++---------------+-----------------------------------+--------------------------------------------------+
+| Aspek         | Local Development                 | Hosting / Production                             |
++---------------+-----------------------------------+--------------------------------------------------+
+| URL           | kursusku-prototype.test/localhost | Domain atau subdomain publik                     |
+| Lokasi file   | Laptop mahasiswa                  | Server hosting                                   |
+| Database      | MySQL lokal Laragon (jika dipakai)| Database server hosting                          |
+| Environment   | Development                       | Production                                       |
+| HTTPS/SSL     | Tidak selalu tersedia             | Seharusnya HTTPS aktif                           |
+| Debug         | Boleh, membantu belajar           | Jangan tampilkan detail error sensitif           |
+| Secret        | Disimpan lokal, tidak dibagikan   | Disimpan aman sebagai konfigurasi server         |
+| Document root | Folder proyek di Laragon (www)    | Folder web yang ditentukan provider; pada Laravel|
+|               |                                   | nanti diarahkan ke folder public                 |
++---------------+-----------------------------------+--------------------------------------------------+
+
+CHECKLIST SIMULASI SEBELUM HOSTING
+[ ] Semua path file relatif dan tidak bergantung pada lokasi laptop.
+[ ] Tidak ada password/API key ditulis di source code.
+[ ] Link internal dan aset diuji (CSS, gambar, video, tautan navigasi).
+[ ] Halaman mobile diuji.
+[ ] HTTPS dipahami sebagai perlindungan data saat transit.
+
+CATATAN PENJELASAN (tulis ulang dengan bahasa sendiri sebelum dikumpulkan)
+- Hosting memindahkan aplikasi dari laptop ke server publik yang selalu aktif.
+- POST tidak otomatis terenkripsi; kerahasiaan data saat transit membutuhkan HTTPS.
+- Pada hosting, pesan error detail harus disembunyikan agar struktur sistem tidak bocor.

@@ -348,3 +348,79 @@ tr.total td { background: var(--soft); font-weight: 700; }
   .choice { display: flex; margin-right: 0; padding-block: .3rem; }
   .hero { padding: 1.5rem 1rem; }
 }
+
+/* 8. PERTEMUAN 6: ERROR, FASILITAS, LOOP LAB ------------------------------- */
+.card-title { margin: 0 0 .75rem; font-size: 1.1rem; }
+.summary-card .card-title:not(:first-child) { margin-top: 1.5rem; }
+
+.alert-error {
+  max-width: 760px;
+  margin: 2rem auto 1rem;
+  padding: 1.2rem;
+  background: var(--bad-bg);
+  border-left: 4px solid var(--bad-text);
+}
+
+.alert-error h1 { margin: 0 0 .5rem; font-size: 1.4rem; color: var(--bad-text); }
+.error-list { margin: 0 0 1rem; padding-left: 1.25rem; }
+
+.facility-list { margin: 0 0 1rem; padding-left: 1.25rem; }
+.facility-list li { margin-bottom: .25rem; }
+.form-card .facility-list:last-child,
+.summary-card .facility-list:last-of-type { margin-bottom: 1rem; }
+
+code {
+  background: var(--soft);
+  border-radius: .3rem;
+  padding: .1rem .35rem;
+  font-size: .9em;
+}
+
+.loop-output {
+  background: var(--soft);
+  border-left: 4px solid var(--brand);
+  padding: .8rem 1rem;
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: .9rem;
+}
+
+nav a[aria-current="page"] { font-weight: 700; text-decoration: underline; }
+
+/* 9. TEST MATRIX (test-matrix.php) ----------------------------------------- */
+.matrix-intro { text-align: center; }
+.matrix-intro h1 { margin: .35rem 0 .5rem; }
+.matrix-intro p:last-child { color: var(--muted); margin: 0; }
+
+.matrix-card {
+  max-width: 960px;
+  margin: 0 auto 2rem;
+}
+
+.matrix-table th,
+.matrix-table td { white-space: normal; vertical-align: middle; }
+
+.matrix-table th:first-child,
+.matrix-table td:first-child { width: 56px; color: var(--muted); }
+
+.matrix-table td.strong { font-weight: 700; }
+.matrix-table th.center,
+.matrix-table td.center { text-align: center; }
+
+.matrix-table tbody tr:hover { background: var(--soft); }
+
+.matrix-table tfoot td {
+  background: var(--soft);
+  border-top: 1px solid var(--line);
+  border-bottom: 0;
+  font-weight: 700;
+}
+
+.matrix-table .summary-label { text-align: right; color: var(--muted); }
+.matrix-table .all-pass { color: var(--ok-text); }
+.matrix-table .has-fail { color: var(--bad-text); }
+
+.matrix-note { margin: .75rem .25rem 0; }
+
+@media (max-width: 640px) {
+  .matrix-table { min-width: 600px; }
+}

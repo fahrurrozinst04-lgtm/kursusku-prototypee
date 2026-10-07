@@ -1,0 +1,25 @@
+TEST MATRIX - PERTEMUAN 5 (Form Pendaftaran KursusKu)
+Penguji  : ______________________
+Tanggal  : ______________________
+Cara isi : ubah setiap "[ ]" menjadi Lulus / Perlu Perbaikan setelah Anda benar-benar
+           mengujinya di browser, lalu tulis satu kalimat catatan.
+
+No | Test        | Langkah                                    | Hasil yang diharapkan                    | Status | Catatan
+---+-------------+--------------------------------------------+------------------------------------------+--------+--------
+1  | Load form   | Buka registration.php                      | Form tampil tanpa error                  | [ ]    |
+2  | Required    | Kirim form kosong                          | Browser menahan field wajib              | [ ]    |
+3  | Email       | Isi email "abc"                            | Browser meminta format email             | [ ]    |
+4  | Nama pendek | Isi 2 karakter pada Nama                   | minlength mencegah submit                | [ ]    |
+5  | GET         | Ubah method ke GET lalu submit data latihan| Parameter terlihat di URL                | [ ]    |
+6  | POST        | Kembalikan ke POST dan submit              | Query data tidak tampil pada URL         | [ ]    |
+7  | Radio       | Pilih Mahasiswa/Umum                       | Nilai muncul di ringkasan                | [ ]    |
+8  | Checkbox    | Pilih dua minat                            | Dua nilai muncul setelah digabung        | [ ]    |
+9  | Textarea    | Isi catatan singkat (coba karakter < > ")  | Isi ditampilkan kembali dengan aman      | [ ]    |
+10 | Hidden      | Submit form                                | Sumber "week-05" diterima                | [ ]    |
+11 | Mobile      | Uji sekitar 360 px di DevTools             | Form satu kolom, tidak overflow          | [ ]    |
+12 | Navigasi    | Beranda -> Katalog -> Daftar               | Semua link menuju tujuan benar           | [ ]    |
+
+Uji tambahan (proyek ini)
+13 | Preselect   | Klik "Daftar" pada baris PHP Dasar di katalog| Pilihan kursus otomatis "PHP Dasar"    | [ ]    |
+14 | Kursus penuh| Buka daftar kursus pada select             | Laravel Fundamental tidak bisa dipilih   | [ ]    |
+15 | Gambar hero | Buka index.php                             | Gambar tampil (hero-kursus.jpg)          | [ ]    |
